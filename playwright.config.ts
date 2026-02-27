@@ -1,5 +1,7 @@
 import { defineConfig, devices } from '@playwright/test';
 
+import { CONFIG } from "./utils/env";
+
 /**
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
@@ -25,10 +27,19 @@ export default defineConfig({
   reporter: 'html',
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
+
+
+    // Use saved session so no login is needed
+    storageState: "auth/state.json",
+
     /* Base URL to use in actions like `await page.goto('')`. */
     // baseURL: 'http://localhost:3000',
-
+    baseURL: CONFIG.baseURL,
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
+
+    screenshot: "only-on-failure",
+    video: "retain-on-failure",
+
     trace: 'on-first-retry',
   },
 
@@ -39,15 +50,15 @@ export default defineConfig({
       use: { ...devices['Desktop Chrome'] },
     },
 
-    {
-      name: 'firefox',
-      use: { ...devices['Desktop Firefox'] },
-    },
-
-    {
-      name: 'webkit',
-      use: { ...devices['Desktop Safari'] },
-    },
+    /* {
+       name: 'firefox',
+       use: { ...devices['Desktop Firefox'] },
+     },
+ 
+     {
+       name: 'webkit',
+       use: { ...devices['Desktop Safari'] },
+     },*/
 
     /* Test against mobile viewports. */
     // {
