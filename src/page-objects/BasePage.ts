@@ -1,12 +1,14 @@
+// src/pages/base.page.ts
+import { Page } from '@playwright/test';
+import { waitForLightningReady } from '../utils/lightning-wait';
 
-import { Page, Locator } from "@playwright/test";
-
-export class FooterPage {
-    readonly page: Page;
-    readonly footer: Locator;
-
+export class BasePage {
+    protected readonly page: Page;
     constructor(page: Page) {
         this.page = page;
-        this.footer = page.locator('#footer');
+    }
+
+    async waitForLightning() {
+        await waitForLightningReady(this.page);
     }
 }

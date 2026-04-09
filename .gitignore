@@ -1,12 +1,14 @@
-# Playwright
 .env
+# Playwright
 node_modules/
 /test-results/
+/allure-results/
+/allure-report/
 /playwright-report/
 /blob-report/
 /playwright/.cache/
 /playwright/.auth/
+/.env/
 /auth/state.json
-/secrets/*.*
-storageState.json
-
+/secrets/
+/storageState.json

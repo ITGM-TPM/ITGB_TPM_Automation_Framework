@@ -27,7 +27,7 @@ function makeFreshJwt(): string {
     const iss = process.env.SF_CLIENT_ID!;
     const sub = process.env.SF_USERNAME!;
     const aud = process.env.SF_AUD || "https://test.salesforce.com"; // default: Sandbox login host
-    const exp = Math.floor(Date.now() / 1000) + 60 * 3; // <= 5 minutes (short-lived)
+    const exp = Math.floor(Date.now() / 1000) + 60 * 5; // <= 5 minutes (short-lived)
 
     if (!iss) throw new Error("Missing SF_CLIENT_ID");
     if (!sub) throw new Error("Missing SF_USERNAME");
