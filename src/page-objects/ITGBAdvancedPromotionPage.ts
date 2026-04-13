@@ -140,6 +140,8 @@ export class ITGBAdvancedPromotionPage {
 
     async createNewTPMPromotion(promotionName: string, startDate: string) {
         await this.openPromotionTab();
+
+
         await this.buttonNewTPMPromotion.click();
         await expect(this.textPromotionName).toBeVisible();
 

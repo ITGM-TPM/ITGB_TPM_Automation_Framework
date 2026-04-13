@@ -10,5 +10,5 @@ node_modules/
 /playwright/.auth/
 /.env/
 /auth/state.json
-/secrets/
+/secrets/*.key
 /storageState.json
